@@ -1,0 +1,61 @@
+Bruteforce :
+
+class Solution {
+    public void rotate(int[] nums, int k) {
+        
+        int lastElement = 0;
+        int length = nums.length;
+
+        for(int i = 0 ; i < k ;i++ ){   
+            lastElement = nums[length-1];
+
+            for(int j = length-2 ; j >= 0 ; j--){
+                nums[j+1] = nums[j];
+            }
+
+            nums[0] = lastElement;
+
+
+
+
+        }
+
+
+    }
+}
+
+Complexity : O(N*k)
+
+
+
+Optimized :
+
+class Solution {
+    public void rotate(int[] nums, int k) {
+        
+        if(k > nums.length){
+k=k%nums.length;
+}
+        int[] result=new int[nums.length];
+    int j=0;
+    for(int i=k;i<nums.length;i++){
+        result[i]=nums[j];
+        j++;
+    }
+    
+    for(int i=0;i<k;i++){
+        result[i]=nums[j];
+        j++;
+        
+    }
+    System.arraycopy( result, 0, nums, 0, nums.length );
+
+
+
+    }
+}
+
+Time Complexity : O(N)
+Space: O(N)
+
+
